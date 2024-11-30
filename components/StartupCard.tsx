@@ -10,7 +10,10 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       _id: authorId, 
       name 
     }, 
-    _id, description, image, category, 
+    _id, 
+    description, 
+    image, 
+    category, 
     title 
   } = post
 
