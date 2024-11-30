@@ -1,9 +1,21 @@
 import SearchForm from "@/components/SearchForm";
+import StartupCard from "@/components/StartupCard";
 
 export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string }>
 }) {
   const query = (await searchParams).query
+
+  const posts = [{
+    _createdAt: new Date(),
+    views: 55,
+    author: { _id: 1, name: 'James' },
+    _id: 1,
+    description: 'no desc',
+    image: 'https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25552747/WoW_Remix_MOP_Key_Art.jpg?quality=90&strip=all&crop=7.8125%2C0%2C84.375%2C100&w=1080',
+    category: 'gaming',
+    title: 'WoW monster'
+  }]
 
   return (
     <>
@@ -29,7 +41,17 @@ export default async function Home({ searchParams }: {
         </p>
 
         <ul className="mt-7 card_grid">
-          
+          {posts?.length > 0 ? (
+            posts.map((post: StartupCardType, index: number) => (
+              <StartupCard key={post?._id} post={post} />
+            ))
+          ) : (
+            <p className="no-results">
+              No startups found
+            </p>
+          )
+
+          }
         </ul>
       </section>
     </>
