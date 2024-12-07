@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: {
             ))
           ) : (
             <p className="no-results">
-              No startups found
+              No startups found.
             </p>
           )
 
