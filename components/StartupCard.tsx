@@ -6,13 +6,10 @@ import { Button } from "./ui/button"
 
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const { 
-    _createdAt, 
     views, 
-    author: { 
-      _id: authorId, 
-      name 
-    }, 
-    _id, 
+    createdat,
+    authors,
+    id, 
     description, 
     image, 
     category, 
@@ -23,7 +20,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
     <li className="startup-card group">
       <div className="flex-between">
         <p className="startup_card_date">
-          {formatDate(_createdAt)}
+          {formatDate(createdat)}
         </p>
         <div className="flex gap-1.5">
           <EyeIcon className="size-6 text-primary" />
@@ -35,23 +32,23 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
+          <Link href={`/user/${authors.id}`}>
             <p className="text-16-medium line-clamp-1">
-              {name}
+              {authors.name}
             </p>
           </Link>
-          <Link href={`/startup/${_id}`}>
+          <Link href={`/startup/${id}`}>
             <h3 className="text-26-semibold line-clamp-1">
               {title}
             </h3>
           </Link>
         </div>
-        <Link href={`/user/${authorId}`}>
+        <Link href={`/user/${authors.id}`}>
           <Image src="https://placehold.co/600x400" alt="placeholder" width={48} height={48} className="rounded-full" />
         </Link>
       </div>
 
-      <Link href={`/startup/${_id}`}>
+      <Link href={`/startup/${id}`}>
         <p className="startup-card_desc">
           {description}
         </p>
@@ -65,7 +62,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           </p>
         </Link>
         <Button className="start-up_btn" asChild>
-          <Link href={`/startup/${_id}`}>
+          <Link href={`/startup/${id}`}>
             Details
           </Link>
         </Button>
