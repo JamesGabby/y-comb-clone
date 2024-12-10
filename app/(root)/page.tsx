@@ -16,8 +16,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
       category,
       image,
       pitch,
-      authors (id, name) -- Fetch id and name from the authors table
-    `);
+      authors (id, name)
+    `)
 
   if (error) {
     console.error('Error fetching startups:', error);
@@ -28,7 +28,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
     <>
       <section className="pink_container">
         <p className="tag">Pitch, Vote, And Grow</p>
-        
+
         <h1 className="heading">
           Pitch Your Startup, <br />
           Connect With Entrepreneurs
@@ -49,7 +49,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
 
         <ul className="mt-7 card_grid">
           {startups ? (
-            startups?.map((startup: StartupCardType) => (
+            startups?.map((startup) => (
               <StartupCard key={startup?.id} post={startup} />
             ))
           ) : (
