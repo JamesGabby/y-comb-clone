@@ -5,7 +5,8 @@ import { supabase } from "@/lib/supabase"
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query
 
-  const { data: startups, error } = await supabase
+  let { data: startups, error } = query ? 
+    await supabase
     .from('startups')
     .select(`
       id,
@@ -17,8 +18,23 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
       image,
       pitch,
       authors (id, name)
-    `)
-
+    `).or(
+      `title.ilike.%${query}%,
+      description.ilike.%${query}%,
+      category.ilike.%${query}%`
+     ) : await supabase
+     .from('startups')
+     .select(`
+       id,
+       title,
+       createdat,
+       views,
+       description,
+       category,
+       image,
+       pitch,
+       authors (id, name)
+     `)
   if (error) {
     console.error('Error fetching startups:', error);
     return <div>Error loading startups.</div>;
