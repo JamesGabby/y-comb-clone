@@ -19,9 +19,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
       pitch,
       authors (id, name)
     `).or(
-      `title.ilike.%${query}%,
-      description.ilike.%${query}%,
-      category.ilike.%${query}%`
+      `title.ilike.%${query}%,description.ilike.%${query}%,category.ilike.%${query}%`
      ) : await supabase
      .from('startups')
      .select(`
