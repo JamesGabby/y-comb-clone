@@ -1,10 +1,10 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCard";
-import { fetchStartups } from "@/lib/supabase";
+import { fetchStartupsByQuery } from "@/lib/supabase";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const { query } = await searchParams; // Destructure the query from params
-  const { data: startups, error } = await fetchStartups(query);
+  const { data: startups, error } = await fetchStartupsByQuery(query);
 
   if (error) {
     console.error('Error fetching startups:', error.message, error.details);

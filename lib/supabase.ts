@@ -7,7 +7,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Supabase queries
-export const fetchStartups = async (query?: string) => {
+export const fetchStartupsByQuery = async (query?: string) => {
   const selectFields = `
     id,
     title,
@@ -29,6 +29,24 @@ export const fetchStartups = async (query?: string) => {
       `title.ilike.%${query}%,description.ilike.%${query}%,category.ilike.%${query}%`
     );
   }
+
+  return await queryBuilder;
+};
+
+export const fetchStartupById = async (id?: string) => {
+  const selectFields = `
+    id,
+    title,
+    createdat,
+    views,
+    description,
+    category,
+    image,
+    pitch,
+    authors (id, name)
+  `;
+
+  const queryBuilder = supabase.from('startups').select('*').eq('id', id).single();
 
   return await queryBuilder;
 };
