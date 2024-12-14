@@ -1,5 +1,4 @@
 import { fetchStartupById } from '@/lib/supabase';
-import React from 'react'
 import Ping from './Ping';
 
 const View = async ({ id }: { id: string }) => {
