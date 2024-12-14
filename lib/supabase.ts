@@ -43,10 +43,10 @@ export const fetchStartupById = async (id?: string) => {
     category,
     image,
     pitch,
-    authors (id, name)
+    authors (id, name, image, username)
   `;
 
-  const queryBuilder = supabase.from('startups').select('*').eq('id', id).single();
+  const queryBuilder = supabase.from('startups').select(selectFields).eq('id', id).single();
 
   return await queryBuilder;
 };
