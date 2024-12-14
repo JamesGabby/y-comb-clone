@@ -1,7 +1,10 @@
+import { Skeleton } from '@/components/ui/skeleton';
+import View from '@/components/View';
 import { fetchStartupById } from '@/lib/supabase'
 import { formatDate } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id
@@ -50,6 +53,11 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             {startup.pitch}
           </p>
         </div>
+        <hr className="divider" />
+        {/* TODO: EDITOR SELECTED STARTUPS */}
+        <Suspense fallback={<Skeleton className='view_skeleton' />}>
+          <View id={startup.id} />
+        </Suspense>
       </section>
     </>
   )
