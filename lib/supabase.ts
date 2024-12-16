@@ -62,6 +62,6 @@ export const updateViews = async (id: string, currentViews: number) => {
   if (error) {
     console.error('Error updating column:', error);
   } else {
-    console.log('Updated record:', data);
+    console.log(`Updated record: id=${id} views=${currentViews+1}`);
   }
 }

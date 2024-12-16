@@ -1,5 +1,6 @@
 import { updateViews, fetchStartupById } from '@/lib/supabase';
 import Ping from './Ping';
+import { after } from 'next/server';
 
 const View = async ({ id }: { id: string }) => {
   const { data: startup, error } = await fetchStartupById(id);
@@ -9,8 +10,8 @@ const View = async ({ id }: { id: string }) => {
     return <div>Error loading startup. Please try again later.</div>;
   }
 
-  await updateViews(id, startup.views)
-
+  after(async () => await updateViews(id, startup.views))
+  
   return (
     <div className="view-container">
       <div className="absolute -top-2">
