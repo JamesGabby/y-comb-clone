@@ -1,4 +1,5 @@
-// lib/supabase.js
+// CONNECT TO SUPABASE
+
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -6,7 +7,8 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Supabase queries
+// SUPABASE QUERIES
+
 export const fetchStartupsByQuery = async (query?: string) => {
   const selectFields = `
     id,
@@ -50,3 +52,16 @@ export const fetchStartupById = async (id?: string) => {
 
   return await queryBuilder;
 };
+
+export const updateViews = async (id: string, currentViews: number) => {
+  const { data, error } = await supabase
+    .from('startups') // Replace with your table name
+    .update({ views: currentViews + 1 }) // The column(s) to update
+    .eq('id', id); // Condition to match rows (update where `id` is 1)
+
+  if (error) {
+    console.error('Error updating column:', error);
+  } else {
+    console.log('Updated record:', data);
+  }
+}

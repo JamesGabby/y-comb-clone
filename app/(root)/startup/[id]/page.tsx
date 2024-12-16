@@ -1,6 +1,8 @@
+import TestButton from '@/components/TestButton';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import View from '@/components/View';
-import { fetchStartupById } from '@/lib/supabase'
+import { addToViews, fetchStartupById } from '@/lib/supabase'
 import { formatDate } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';

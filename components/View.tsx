@@ -1,4 +1,4 @@
-import { fetchStartupById } from '@/lib/supabase';
+import { updateViews, fetchStartupById } from '@/lib/supabase';
 import Ping from './Ping';
 
 const View = async ({ id }: { id: string }) => {
@@ -8,6 +8,8 @@ const View = async ({ id }: { id: string }) => {
     console.error('Error fetching startup:', error.message, error.details);
     return <div>Error loading startup. Please try again later.</div>;
   }
+
+  await updateViews(id, startup.views)
 
   return (
     <div className="view-container">
