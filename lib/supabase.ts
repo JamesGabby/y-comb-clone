@@ -54,7 +54,7 @@ export const fetchStartupById = async (id?: string) => {
 };
 
 export const updateViews = async (id: string, currentViews: number) => {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('startups') // Replace with your table name
     .update({ views: currentViews + 1 }) // The column(s) to update
     .eq('id', id); // Condition to match rows (update where `id` is 1)
