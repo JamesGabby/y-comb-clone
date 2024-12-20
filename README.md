@@ -1,39 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+YC Directory is a cutting-edge web application designed to foster innovation and collaboration among entrepreneurs and visionaries. This platform allows users to share, create, view, and vote on innovative startup ideas, empowering individuals to showcase their creativity and gain valuable feedback from a community of like-minded individuals.
 
-This application allows people to create and share their startup ideas where people can view and vote on them.
-It uses Next.js, Tailwind CSS, Supabase, TypeScript.
+Key Features:
+-Create and Share Ideas: Users can post their unique startup concepts, complete with detailed descriptions, images, and pitches.
+-Explore and Discover: Browse a curated feed of startup ideas across various categories, each designed to inspire and spark collaboration.
+-Vote on Ideas: Engage with the community by voting on your favorite ideas, helping surface the most innovative and promising concepts.
+-User Authentication: Secure and seamless sign-up and login experience using Auth.js, enabling personalized user interactions.
+-Dynamic Content Updates: Real-time updates to ensure users stay informed about the latest ideas, votes, and feedback without needing to refresh the page.
 
-## Getting Started
+Tech Stack:
+Next.js 15: Provides the foundation for a fast, dynamic, and SEO-friendly application with server-side rendering and API routes.
+Supabase: Powers the backend with a robust database, authentication, and real-time capabilities, ensuring a seamless user experience.
+Auth.js: Manages authentication and user sessions, offering a secure and scalable identity solution.
+TailwindCSS: Enables a sleek and responsive user interface with utility-first CSS for rapid design iteration.
+TypeScript: Ensures code reliability and maintainability with strong typing, reducing runtime errors.
+Lucide: Provides elegant and customizable icons, enhancing the application's visual appeal and usability.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+YC Directory combines powerful technologies with a user-centric design to create a platform that drives innovation, encourages feedback, and builds connections between entrepreneurs worldwide. Whether you're looking to validate your idea or discover the next big thing, YC Directory is your go-to destination for entrepreneurial creativity.
