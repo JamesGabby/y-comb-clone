@@ -55,7 +55,7 @@ export const fetchStartupById = async (id?: string) => {
 
 export const updateViews = async (id: string, currentViews: number) => {
   const { error } = await supabase
-    .from('startups') // Replace with your table name
+    .from('startups') 
     .update({ views: currentViews + 1 }) // The column(s) to update
     .eq('id', id); // Condition to match rows (update where `id` is 1)
 
@@ -64,4 +64,54 @@ export const updateViews = async (id: string, currentViews: number) => {
   } else {
     console.log(`Updated record: id=${id} views=${currentViews+1}`);
   }
+}
+
+export const fetchAuthorById = async (id: string) => {
+  const { data, error } = await supabase
+    .from('authors') 
+    .select('*') 
+    .eq('id', id); // Condition to match rows (update where `id` is 1)
+
+  if (error) {
+    console.error('Error fetching author:', error);
+  } 
+
+  return data
+}
+
+export const createAuthor = async (id: number, name: string | null | undefined, username: string, email: string | null | undefined, image: string | null | undefined, bio: string) => {
+  const { data, error } = await supabase
+    .from('authors') 
+    .insert([
+      { 
+        id,
+        name,
+        email,
+        image,
+        username,
+        bio
+      }
+    ]) 
+
+  if (error) {
+    console.error('Error creating author:', error);
+  } 
+
+  console.log('Author created:', data);
+  return data
+}
+
+export const fetchLastAuthor = async () => {
+  const { data, error } = await supabase
+    .from('authors') // Replace with your table name
+    .select('*') // Specify columns or use '*' for all columns
+    .order('id', { ascending: false }) // Order by the 'id' column in descending order
+    .limit(1); // Limit the result to the last row
+
+  if (error) {
+    console.error('Error fetching the last row:', error);
+    return null;
+  }
+
+  return data[0]; // The last row will be the first (and only) item in the array
 }
