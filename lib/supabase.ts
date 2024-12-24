@@ -79,26 +79,30 @@ export const fetchAuthorById = async (id: string) => {
   return data
 }
 
-export const createAuthor = async (id: number, name: string | null | undefined, username: string, email: string | null | undefined, image: string | null | undefined, bio: string) => {
+export async function fetchAuthorByEmail(email: string | null | undefined) {
   const { data, error } = await supabase
-    .from('authors') 
-    .insert([
-      { 
-        id,
-        name,
-        email,
-        image,
-        username,
-        bio
-      }
-    ]) 
+    .from("authors")
+    .select("*")
+    .eq("email", email)
+    .single(); // Expect a single record
 
   if (error) {
-    console.error('Error creating author:', error);
-  } 
+    console.error("Error fetching author by email:", error);
+    return null;
+  }
+  return data;
+}
 
-  console.log('Author created:', data);
-  return data
+export async function createAuthor({ id, name, username, email, image, bio }: { id: number, name: string | null | undefined, username: Object, email: string | null | undefined, image: string | null | undefined, bio: Object }) {
+  const { data, error } = await supabase
+    .from("authors")
+    .insert([{ id, name, username, email, image, bio }]);
+
+  if (error) {
+    console.error("Error creating author:", error);
+    return null;
+  }
+  return data;
 }
 
 export const fetchLastAuthor = async () => {
@@ -115,3 +119,4 @@ export const fetchLastAuthor = async () => {
 
   return data[0]; // The last row will be the first (and only) item in the array
 }
+

@@ -12,3 +12,7 @@ export function formatDate(date: string) {
     year: 'numeric',
   })
 }
+
+export function generateRandomNumbers() {
+  return Array.from({ length: 10 }, () => Math.floor(Math.random() * 10)).join('');
+}
