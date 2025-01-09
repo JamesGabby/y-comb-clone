@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCard";
 import { fetchStartupsByQuery } from "@/lib/supabase";
@@ -10,6 +11,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
     console.error('Error fetching startups:', error.message, error.details);
     return <div>Error loading startups. Please try again later.</div>;
   }
+
+  const session = await auth()
+  console.log('id',session?.id);
 
   return (
     <>

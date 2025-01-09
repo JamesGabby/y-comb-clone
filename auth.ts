@@ -32,5 +32,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return false; // Deny sign-in if an error occurs
       }
     },
+    async jwt({ token, account, profile }) {
+      if (account && profile) {
+        const user = await fetchAuthorByEmail(profile?.email)
+        token.id = user.id
+      }
+      return token
+    },
+    async session({ session, token }) {
+      Object.assign(session, { id: token.id })
+      return session
+    }
   },
 });

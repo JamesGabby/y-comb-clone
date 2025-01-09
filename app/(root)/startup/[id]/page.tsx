@@ -1,3 +1,4 @@
+import { auth } from '@/auth';
 import { Skeleton } from '@/components/ui/skeleton';
 import View from '@/components/View';
 import { fetchStartupById } from '@/lib/supabase'
@@ -14,6 +15,9 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     console.error('Error fetching startup:', error.message, error.details);
     return <div>Error loading startup. Please try again later.</div>;
   }
+
+  const session = auth()
+  console.log('p',session);
   
   return (
     <>
